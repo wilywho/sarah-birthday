@@ -103,7 +103,7 @@ if name:
         )
     
     # Jika hadiah pertama sudah dibuka, tampilkan hadiah pertama
-    if st.session_state.book_1_opened:
+    if st.session_state.book_1_opened and first_book not in st.session_state.opened_books:
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
@@ -118,7 +118,6 @@ if name:
             """,
             unsafe_allow_html=True
         )
-    st.write("")
 
     # Tombol untuk menampilkan hadiah kedua
     if st.button("Open Hadiah 2") and not st.session_state.book_2_opened:
@@ -142,7 +141,7 @@ if name:
         )
     
     # Jika hadiah kedua sudah dibuka, tampilkan hadiah kedua
-    if st.session_state.book_2_opened:
+    if st.session_state.book_2_opened and second_book not in st.session_state.opened_books:
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
