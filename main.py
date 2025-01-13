@@ -163,15 +163,17 @@ if name:
         st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
 
 # Menampilkan tabel dengan buku yang telah dibuka
-if st.session_state.opened_books:
-    st.write("### List:")
-    books_df = pd.DataFrame(st.session_state.opened_books, columns=["Buku"])
-    st.dataframe(books_df)
+if st.session_state.book_1_opened and st.session_state.book_2_opened:
+    if st.session_state.opened_books:
+        st.write("### Buku yang telah dibuka:")
+        books_df = pd.DataFrame(st.session_state.opened_books, columns=["Buku"])
+        st.dataframe(books_df)
 
 st.write("")
 st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
 # Footer
 st.write("---")
 st.write("✨ Dibuat dengan Streamlit untuk merayakan momen spesial! 🎈")
+
 
 
