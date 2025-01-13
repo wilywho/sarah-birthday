@@ -164,7 +164,7 @@ if name:
 
 # Menampilkan tabel dengan buku yang telah dibuka
 if st.session_state.opened_books:
-    st.write("### Buku yang telah dibuka:")
+    st.write("### List:")
     books_df = pd.DataFrame(st.session_state.opened_books, columns=["Buku"])
     st.dataframe(books_df)
 
