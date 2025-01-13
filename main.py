@@ -23,6 +23,12 @@ if "is_first_generate" not in st.session_state:
 if "is_second_generate" not in st.session_state:
     st.session_state.is_second_generate = True
 
+# Simpan state hadiah buku yang telah dibuka
+if "book_1_opened" not in st.session_state:
+    st.session_state.book_1_opened = False
+if "book_2_opened" not in st.session_state:
+    st.session_state.book_2_opened = False
+
 # Judul halaman
 st.markdown(
     """
@@ -40,18 +46,19 @@ st.markdown(
 )
 
 # Input nama penerima ucapan
-name = "Sarah"
+name = "Sarah"  # Menetapkan nama secara langsung
 
 if name:
     st.markdown(
-        f"""
-        <div style="text-align: center;">
-            <h2>🎊 Selamat ulang tahun, {name}! 🎉</h2>
-            <p>Barakallah fii umrik, semoga semua impian dan target di tahun 2025 tercapai yaa! Sukses selalu! 🎁</p>
-        </div>
-        """,
-        unsafe_allow_html=True
+    """
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h2>🎊 Selamat ulang tahun, Sarah! 🎉</h2>
+        <p style="margin-top: 20px;">Barakallah fii umrik, semoga semua impian dan target di tahun 2025 tercapai yaa! Sukses selalu! 🎁</p>
+    </div>
+    """,
+    unsafe_allow_html=True
     )
+
 
     # Tentukan hadiah berdasarkan urutan generate
     if st.session_state.is_first_generate:
@@ -70,9 +77,10 @@ if name:
     st.subheader("🎁 Hadiah untuk Kamu:")
 
     # Tombol untuk menampilkan hadiah pertama
-    if st.button("Open Hadiah 1"):
+    if st.button("Open Hadiah 1") and not st.session_state.book_1_opened:
         with st.spinner("Membuka hadiah pertama..."):
             time.sleep(2)  # Tunggu 2 detik
+        st.session_state.book_1_opened = True  # Tandai hadiah pertama sudah dibuka
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
@@ -89,9 +97,10 @@ if name:
         )
 
     # Tombol untuk menampilkan hadiah kedua
-    if st.button("Open Hadiah 2"):
+    if st.button("Open Hadiah 2") and not st.session_state.book_2_opened:
         with st.spinner("Membuka hadiah kedua..."):
             time.sleep(2)  # Tunggu 2 detik
+        st.session_state.book_2_opened = True  # Tandai hadiah kedua sudah dibuka
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
@@ -106,10 +115,12 @@ if name:
             """,
             unsafe_allow_html=True
         )
-st.write("Note: Hadiah akan dipilih secara random pada pukul 22.00 WIB apabila tidak dibuka manual")
+
+
+st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
 # Footer
 st.write("---")
 st.write("✨ Dibuat dengan Streamlit untuk merayakan momen spesial! 🎈")
-
+st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
 
 
