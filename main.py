@@ -160,6 +160,7 @@ if name:
 
     # Tampilkan pesan pengiriman setelah semua hadiah dibuka
     if st.session_state.book_1_opened and st.session_state.book_2_opened:
+        st.write("")
         st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
 
 # Menampilkan tabel dengan buku yang telah dibuka
