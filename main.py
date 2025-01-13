@@ -95,6 +95,23 @@ if name:
             """,
             unsafe_allow_html=True
         )
+    
+    # Jika hadiah pertama sudah dibuka, tampilkan hadiah pertama
+    if st.session_state.book_1_opened:
+        st.markdown(
+            f"""
+            <div style="animation: fadeIn 2s; text-align: center;">
+                📚 <strong>{first_book}</strong>
+            </div>
+            <style>
+                @keyframes fadeIn {{
+                    from {{ opacity: 0; }}
+                    to {{ opacity: 1; }}
+                }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
     st.write("")
 
     # Tombol untuk menampilkan hadiah kedua
@@ -115,9 +132,26 @@ if name:
             </style>
             """,
             unsafe_allow_html=True
-        st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
         )
-        
+    
+    # Jika hadiah kedua sudah dibuka, tampilkan hadiah kedua
+    if st.session_state.book_2_opened:
+        st.markdown(
+            f"""
+            <div style="animation: fadeIn 2s; text-align: center;">
+                📚 <strong>{second_book}</strong>
+            </div>
+            <style>
+                @keyframes fadeIn {{
+                    from {{ opacity: 0; }}
+                    to {{ opacity: 1; }}
+                }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+        st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
+
 st.write("")
 st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
 # Footer
