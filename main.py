@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 import time
+import pandas as pd
 
 # Daftar hadiah buku
 books = [
@@ -28,6 +29,10 @@ if "book_1_opened" not in st.session_state:
     st.session_state.book_1_opened = False
 if "book_2_opened" not in st.session_state:
     st.session_state.book_2_opened = False
+
+# Simpan buku yang telah dibuka
+if "opened_books" not in st.session_state:
+    st.session_state.opened_books = []
 
 # Judul halaman
 st.markdown(
@@ -81,6 +86,7 @@ if name:
         with st.spinner("Membuka hadiah pertama..."):
             time.sleep(2)  # Tunggu 2 detik
         st.session_state.book_1_opened = True  # Tandai hadiah pertama sudah dibuka
+        st.session_state.opened_books.append(first_book)  # Simpan buku yang dibuka
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
@@ -119,6 +125,7 @@ if name:
         with st.spinner("Membuka hadiah kedua..."):
             time.sleep(2)  # Tunggu 2 detik
         st.session_state.book_2_opened = True  # Tandai hadiah kedua sudah dibuka
+        st.session_state.opened_books.append(second_book)  # Simpan buku yang dibuka
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
@@ -150,7 +157,16 @@ if name:
             """,
             unsafe_allow_html=True
         )
+
+    # Tampilkan pesan pengiriman setelah semua hadiah dibuka
+    if st.session_state.book_1_opened and st.session_state.book_2_opened:
         st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
+
+# Menampilkan tabel dengan buku yang telah dibuka
+if st.session_state.opened_books:
+    st.write("### Buku yang telah dibuka:")
+    books_df = pd.DataFrame(st.session_state.opened_books, columns=["Buku"])
+    st.dataframe(books_df)
 
 st.write("")
 st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
