@@ -115,10 +115,10 @@ if name:
             </style>
             """,
             unsafe_allow_html=True
+        st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
         )
         
 st.write("")
-st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
 st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
 # Footer
 st.write("---")
