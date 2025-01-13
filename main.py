@@ -170,7 +170,7 @@ if st.session_state.book_1_opened and st.session_state.book_2_opened:
         st.dataframe(books_df)
 
 st.write("")
-st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
+st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 00.00 WIB apabila tidak dibuka manual")
 # Footer
 st.write("---")
 st.write("✨ Dibuat dengan Streamlit untuk merayakan momen spesial! 🎈")
