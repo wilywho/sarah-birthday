@@ -59,7 +59,6 @@ if name:
     unsafe_allow_html=True
     )
 
-
     # Tentukan hadiah berdasarkan urutan generate
     if st.session_state.is_first_generate:
         book_1 = first_book
@@ -75,6 +74,7 @@ if name:
     book_2 = random.choice([b for b in books if b != book_1])
 
     st.subheader("🎁 Hadiah untuk Kamu:")
+    st.write("")
 
     # Tombol untuk menampilkan hadiah pertama
     if st.button("Open Hadiah 1") and not st.session_state.book_1_opened:
@@ -84,7 +84,7 @@ if name:
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
-                📚 <strong>{book_1}</strong>
+                📚 <strong>{first_book}</strong>
             </div>
             <style>
                 @keyframes fadeIn {{
@@ -95,6 +95,7 @@ if name:
             """,
             unsafe_allow_html=True
         )
+    st.write("")
 
     # Tombol untuk menampilkan hadiah kedua
     if st.button("Open Hadiah 2") and not st.session_state.book_2_opened:
@@ -104,7 +105,7 @@ if name:
         st.markdown(
             f"""
             <div style="animation: fadeIn 2s; text-align: center;">
-                📚 <strong>{book_2}</strong>
+                📚 <strong>{second_book}</strong>
             </div>
             <style>
                 @keyframes fadeIn {{
@@ -115,12 +116,12 @@ if name:
             """,
             unsafe_allow_html=True
         )
-
-
+        
+st.write("")
 st.write("Hadiah akan diantar ke tempat tujuan dalam rentang waktu 1-3 hari kerja")
+st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
 # Footer
 st.write("---")
 st.write("✨ Dibuat dengan Streamlit untuk merayakan momen spesial! 🎈")
-st.write("Note: Hadiah akan dipilih otomatis secara random pada pukul 23.00 WIB apabila tidak dibuka manual")
 
 
